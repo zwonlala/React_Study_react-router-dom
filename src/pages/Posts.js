@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, Route } from 'react-router-dom';
 import { Post } from 'pages';
 
-const Posts = ({match}) => {
+const Posts = ({match, location}) => {
     return (
         <div>
             <h2>Post List</h2>
@@ -12,6 +12,14 @@ const Posts = ({match}) => {
                 <li><Link to={`${match.url}/3`}>Post #3</Link></li>
                 <li><Link to={`${match.url}/4`}>Post #4</Link></li>
             </ul>
+            "location.pathname:" {location.pathname}
+            <br/>
+            "match.path: " {match.path}
+            <br/>
+            "match.url: " {match.url}
+
+            <br/>
+            <br/>
             <Route exact path={match.url} render={() => (<h3>Please select any post</h3>)}/>
             <Route path={`${match.url}/:id`} component={Post}/>
         </div>
